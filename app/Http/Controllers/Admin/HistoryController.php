@@ -25,7 +25,7 @@ class HistoryController extends Controller
     {
         $booking = Booking::find($id);
 
-        $room = Room::find($booking->room_id);
+        $room = Room::find($booking['room_id']);
         Room::where('id',$booking->room_id,)->update(['place_count'=>$room['place_count']-1]);
 
         History::create([
