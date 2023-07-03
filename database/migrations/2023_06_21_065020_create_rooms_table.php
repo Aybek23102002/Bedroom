@@ -23,6 +23,7 @@ class CreateRoomsTable extends Migration
             $table->foreignIdFor(Section::class)->nullable()->constrained();
             $table->integer('number');
             $table->integer('place_count');
+            $table->integer('count');
             $table->boolean('status');
             $table->timestamps();
         });

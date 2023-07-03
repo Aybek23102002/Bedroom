@@ -20,6 +20,7 @@ class RoomResource extends JsonResource
                 'id'=>$this->id,
                 'number'=>$this->number,
                 'place_count'=>$this->place_count,
+                'count'=>$this->count,
                 'bedroom'=>$this->bedroom->number,
                 'floor'=>$this->floor->number,
                 'section'=>$this->section->number,
@@ -32,6 +33,7 @@ class RoomResource extends JsonResource
                 'id'=>$this->id,
                 'number'=>$this->number,
                 'place_count'=>$this->place_count,
+                'count'=>$this->count,
                 'bedroom'=>$this->bedroom->number,
                 'floor'=>$this->floor->number,
                 'status'=>$this->status

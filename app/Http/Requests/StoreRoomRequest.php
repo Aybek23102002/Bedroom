@@ -21,6 +21,7 @@ class StoreRoomRequest extends FormRequest
             'section_id'=>'numeric',
             'number'=>'required|numeric',
             'place_count'=>'required|numeric',
+            'count'=>'required',
             'status'=>'required|numeric'
         ];
     }

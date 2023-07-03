@@ -16,6 +16,7 @@ class Room extends Model
         'section_id',
         'number',
         'place_count',
+        'count',
         'status'
     ];
 

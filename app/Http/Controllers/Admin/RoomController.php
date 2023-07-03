@@ -25,7 +25,7 @@ class RoomController extends Controller
     public function store(StoreRoomRequest $request)
     {
         Room::create($request->validated());
-
+        
         return response([
             'message'=>'created'
         ]);
