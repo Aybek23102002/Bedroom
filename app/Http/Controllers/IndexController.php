@@ -79,9 +79,7 @@ class IndexController extends Controller
 
     public function booking(StoreBookingRequest $request)
     {
-        $room = Room::find($request->room_id);
-        Room::where('id',$request->room_id,)->update(['place_count'=>$room['place_count']-1]);
-
+       
         Booking::create($request->validated());
         
         return response([

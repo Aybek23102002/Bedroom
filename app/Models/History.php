@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class History extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'id',
         'name',
@@ -20,7 +21,6 @@ class Booking extends Model
         'room_id',
         'given_time',
         'return_time',
-        
     ];
 
     public function bedroom()
@@ -35,6 +35,6 @@ class Booking extends Model
 
     public function room()
     {
-        return $this->belongsTo(Room::class);
+        return $this->belongsTo(Rooms::class);
     }
 }

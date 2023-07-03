@@ -28,6 +28,7 @@ class StoreBookingRequest extends FormRequest
             'lastname'=>'required',
             'facultet'=>'required',
             'group'=>'required',
+            'phone'=>'regex:/^\+998(\d{9})$/',
             'bedroom_id'=>'required|numeric',
             'floor_id'=>'required|numeric',
             'room_id'=>'required|numeric',

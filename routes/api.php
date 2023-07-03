@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BedroomController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\FloorController;
+use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\UserController;
@@ -58,6 +59,8 @@ Route::prefix('admin')->group(function(){
     Route::apiResource('rooms',RoomController::class);
     Route::apiResource('booking',AdminBookingController::class);
     Route::apiResource('admins',UserController::class);
+    Route::apiResource('histories',HistoryController::class);
+    Route::post('histories/create/{id}',[HistoryController::class,'create']);
 });
 Route::post('login',[UserController::class,'login']);
 

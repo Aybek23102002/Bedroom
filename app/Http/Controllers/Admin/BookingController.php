@@ -11,11 +11,7 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         return response([
@@ -40,25 +36,7 @@ class BookingController extends Controller
     
     public function update(UpdateBookingRequest $request, Booking $booking)
     {
-        if($booking['room_id'] == $request->room_id)
-        {
-            $booking->update($request->validated());
-            return response([
-                'message'=>'updated'
-            ]);
-        }
-        else
-        {   
-            $room_last = Room::find($booking['room_id']); 
-            $room = Room::find($request->room_id);
-            Room::Where('id',$booking['room_id'])->update(['place_count'=>$room_last['place_count']+1]);
-            Room::Where('id',$request->room_id)->update(['place_count'=>$room['place_count']-1]);
-            $booking->update($request->validated());
-            return response([
-                'message'=>'updated'
-            ]);
-        }
-
+        
         
 
        
@@ -67,12 +45,6 @@ class BookingController extends Controller
     
     public function destroy(Booking $booking)   
     {
-        $room = Room::find($booking['room_id']);   
-        Room::where('id',$booking['room_id'])->update(['place_count'=>$room['place_count']+1]);
-        $booking->delete();
-
-        return response([
-            'message'=>'deleted'
-        ]);
+        
     }
 }

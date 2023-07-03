@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use App\Models\Room;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BookingResource extends JsonResource
+class HistoryResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,7 +14,7 @@ class BookingResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
-    {   
+    {
         $room = Room::find($this->room->id);
 
         if($room['section_id'])
@@ -46,7 +46,5 @@ class BookingResource extends JsonResource
                 'room'=>$this->room->number
             ];
         }
-
-        
     }
 }
