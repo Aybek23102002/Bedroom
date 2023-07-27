@@ -24,14 +24,14 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $request->validated();
-        User::create([
+       $user = User::create([
             'name'=>$request->name,
             'lastname'=>$request->lastname,
             'birthday'=>$request->birthday,
             'phone'=>$request->phone,
             'password'=>Hash::make($request->password)
         ]);
-
+        $user->roles()->attach(1);
         return response([
             'message'=>'created'
         ]);
@@ -62,7 +62,9 @@ class UserController extends Controller
     
     public function destroy($id)
     {
-        User::find($id)->delete();
+        $user = User::find($id);
+        $user->roles()->detach(1);
+        $user->delete();
 
         return response([
             'message'=>'deleted'

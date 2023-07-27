@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Psy\TabCompletion\Matcher\FunctionsMatcher;
 
 class Bedroom extends Model
 {
@@ -20,5 +21,10 @@ class Bedroom extends Model
 
     public function floors(){
         return $this->hasMany(Floor::class,'bedroom_id')->orderBy('created_at',"DESC");
+    }
+
+    public function users()
+    {
+      return $this->belongsToMany(User::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\Admin\BedroomResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -20,6 +21,8 @@ class UserResource extends JsonResource
             'lastname'=>$this->lastname,
             'birthday'=>$this->birthday,
             'phone'=>$this->phone,
+            'roles'=>$this->roles,
+            'bedroom'=>$this->bedrooms
         ];
     }
 }

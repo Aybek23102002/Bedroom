@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BedroomController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\FloorController;
@@ -47,21 +48,24 @@ Route::post('booking',[IndexController::class,'booking']);
 
 Route::middleware('auth:sanctum')->group(function ()
 {
+    Route::prefix('admin')->group(function(){
+        Route::apiResource('bedrooms',BedroomController::class);
+        Route::apiResource('floors',FloorController::class);
+        Route::apiResource('sections',SectionController::class);
+        Route::apiResource('rooms',RoomController::class);
+        Route::apiResource('booking',AdminBookingController::class);
+        Route::apiResource('admins',UserController::class);
+        Route::apiResource('histories',HistoryController::class);
+        Route::post('histories/create/{id}',[HistoryController::class,'create']);
+        Route::post('bedroom/admin/create',[AdminController::class,'create']);
+        Route::post('bedroom/admin/delete',[AdminController::class,'delete']);
     
+    });
 
     Route::post('logout',[UserController::class,'logout']);
 });
 
-Route::prefix('admin')->group(function(){
-    Route::apiResource('bedrooms',BedroomController::class);
-    Route::apiResource('floors',FloorController::class);
-    Route::apiResource('sections',SectionController::class);
-    Route::apiResource('rooms',RoomController::class);
-    Route::apiResource('booking',AdminBookingController::class);
-    Route::apiResource('admins',UserController::class);
-    Route::apiResource('histories',HistoryController::class);
-    Route::post('histories/create/{id}',[HistoryController::class,'create']);
-});
+
 Route::post('login',[UserController::class,'login']);
 
 
